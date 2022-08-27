@@ -1,2 +1,2 @@
-#ignorar carpeta archivos_sensibles
-archivos_sensibles
+#ignorar carpeta node_modules
+node_modules
