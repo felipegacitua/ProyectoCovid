@@ -1629,3 +1629,5 @@ const dataModel = [
       let ds=dataSet.slice(a,b);
       return ds;
   }
+  let dataModelOrdenadaCortada=cortadora(dataModelOrdenada,0,10);
+export {dataModelOrdenadaCortada};
