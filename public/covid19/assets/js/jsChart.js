@@ -54,6 +54,7 @@ const dataPChartColumns=(dataModelOrdenadaCortada)=>{
 //Construye toda la data para cada serie del grafico
 const dataChartColumns=(dataCol, caseType)=>{
   let data=[{ type: "column",
+              name: caseType,
               showInLegend: true,
               toolTipContent: `${caseType}`,//active, confirmed, deaths OR recovered
               indexLabel: caseType=="Activos" ? "{name}-({y})" : "",
@@ -178,3 +179,4 @@ const chartPie = (dataModelCountry) => {
 
 chartColumn(datasForChart);
 chartPie(dataModelOrdenadaCortada[0]);
+export {chartColumn, chartPie}
