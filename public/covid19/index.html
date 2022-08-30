@@ -12,7 +12,8 @@
   <meta name="description" content="Servicio Información Covid">
   <meta name="author" content="Grupo 1 Módulo 4">
   <title>Estadìsticas Covid</title>
-  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/tab.png">
+   <!-- favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicovid.png">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -22,20 +23,96 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Josefin+Sans:wght@200&family=Montserrat:wght@100;500&family=Open+Sans:wght@300;500&family=Ubuntu:wght@300&family=Walter+Turncoat&display=swap"
     rel="stylesheet">
-  <!-- Iconos Font wesome 
-    <script src="https://kit.fontawesome.com/028cd863b1.js" crossorigin="anonymous"></script> -->
+  <!-- Iconos Font wesome </script> -->
+    <script src="https://kit.fontawesome.com/028cd863b1.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <nav id="navBar" class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-    
-  </nav>
+  
+
+  <!--  <div class="container", nav de ingreso> -->
+    <nav class="navbar navbar-expand-lg navbar bg">
+      <!-- <div class="container-fluid"> -->
+         <a class="navbar-brand" href="#"> <img src="assets/img/favicovid.png" alt="favicovid" width="35" height="35"
+          class="d-inline-block align-text-top">      COVID-19</a>
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+             <li class="nav-item">
+               <a class="nav-link " href="#">Home</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link " href="#">USA</a>
+             </li>
+             
+           </ul>
+           
+         </div>
+       </div>
+     </nav>
+
+ <!--  <titulo> -->
+     <header>
+      <h1 class="titulo1">Situacion Mundial Del COVID-19</h1>
+  </header>
+
+ <!--  <card con imagen y texto de entrada del COVID-19 > -->
+
+  <section >
+    <div class="card bg-dark text-white">
+        <img id="imagen1" src="assets/img/covid3.jpg" class="card-img" alt="imagencovid">
+        <div class="card-img-overlay">
+          <h4 class="card-text">Los coronavirus (CoV) son una amplia familia de virus que pueden causar diversas afecciones</h4>
+          <h4 class="card-text">En diciembre del 2019 en Whuan (China), se notificó un brote de causa viral, por un virus de tipo coronavirus que previamente no se había identificado en el ser humano. Ha este nuevo coronavirus, se le conoce actualmente con el nombre de COVID-19</h4>
+          <h4 class="card-text">Los síntomas de este nuevo coronavirus son diversos abarcando gran número de sistemas, describiéndose además una severidad que va desde casos asintomáticos, hasta la muerte.</h4>
+          <h4 class="card-text">La epidemia de COVID-19 fue declarada por la OMS una emergencia de salud
+                pública de preocupación internacional el 30 de enero de 2020.Desde entonces se realizan
+                esfuerzos en todos los países, para intentar controlar esta enfermedad.
+                La situación Mundial y nacional del COVID-19, cambia frecuentemente, por ello en esta página se
+                despliega información de la situación Mundial del COVID-19</h4>
+
+        </div>
+    </div>
+</section>
+
+
+ <!--  <seccion del grafico de barras > -->
+
   <section id="graficoDiv" style="width: 100%;height: 950px;" class="container pt-5">
-    
+  
   </section>
   <section id="prueba">
 
   </section>
+
+
+
+ <!--  <seccion de la tabla con los paises ordenados alfabeticamente > -->
+
+</div>
+  
+
+<div id="graficaMundial"></div>
+
+  <div class="col-md-12" id="tablaPaises"><table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Pais</th>
+        <th scope="col">Muertes</th>
+        <th scope="col">Recuperados</th>
+        <th scope="col">activos</th>
+        <th scope="col">confirmados</th>
+      </tr>
+    </thead>
+    <tbody id="cuerpoTabla">
+    </tbody>
+  </table>
+</div>
+
+ <!--  <seccion del modal > -->
+
   <section id="modalDiv" class="container justify-content-center pt-5">
     <!-- Large modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Modal Button</button>
@@ -48,6 +125,8 @@
       </div>
     </div><!--Fin modal-->
   </section>
+
+  
   <!-- Tras haber leido el doc html -->
   <!-- jQuery, Popper.js, Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
@@ -68,3 +147,4 @@
 </body>
 
 </html>
+>>>>>>> 26aae4bb4200898054a8be5b2ed8c17d03f49220
