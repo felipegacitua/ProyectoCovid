@@ -1,6 +1,4 @@
-
-/////////////////////////////////AQUI Reemplazar con data estàtica
-dataModelOrdenadaCortada=[
+let dataModelOrdenadaCortada=[
     {country: 'Germany', deaths: 136181, recovered: 22658600, active: 2154460, confirmed: 24949241},
     {country: 'France', deaths: 146262, recovered: 27163913, active: 1447590, confirmed: 28757765},
     {country: 'USA', deaths: 1021137, recovered: 80761761, active: 1392806, confirmed: 83175704},
@@ -42,9 +40,9 @@ const dataPChartColumns=(dataModelOrdenadaCortada)=>{
   
   //Se busca la cifra mayor del data set que contruirà el gràfico de barra para establecer su tamaño mayor
   let buscandoMayorCifra=[...columnActive,...columnConfirmed,...columnDeaths,...columnRecovered];
-  mayorCifra=Math.max(...buscandoMayorCifra.map(o => o.y));
+  mayorCifra=Math.max(...buscandoMayorCifra.map(element => element.y));
 
-  //
+  //Construye los datos necesarios para cada columna del objeto chart 
   let cActive= dataChartColumns(columnActive, "Activos");
   let cConfirmed= dataChartColumns(columnConfirmed, "Confirmados");
   let cDeaths= dataChartColumns(columnDeaths, "Fallecidos");
@@ -53,10 +51,15 @@ const dataPChartColumns=(dataModelOrdenadaCortada)=>{
 }
 //Construye toda la data para cada serie del grafico
 const dataChartColumns=(dataCol, caseType)=>{
+  let tamagnoF=15;
+  let familiaF="Montserrat";
   let data=[{ type: "column",
+              name: caseType,
               showInLegend: true,
               toolTipContent: `${caseType}`,//active, confirmed, deaths OR recovered
               indexLabel: caseType=="Activos" ? "{name}-({y})" : "",
+              indexLabelFontSize: tamagnoF,
+              indexLabelFontFamily: familiaF,
               dataPoints: dataCol}];
   return data;
 }
@@ -64,65 +67,91 @@ const dataChartColumns=(dataCol, caseType)=>{
 let datasForChart=dataPChartColumns(dataModelOrdenadaCortada);
 
 const chartColumn = (dataColumns) => {
-  CanvasJS.addColorSet("Colors",
-                ["#2F4F4F",
-                "#008080",
-                "#2E8B57",
-                "#3CB371",
-                "#90EE90"]);
+  let fuenteFamilia="Montserrat";
+  let colorFuente="#363245";
+  let colorLineas="#6b6488";
+  let colorRojo = "#ff6384";
+  let colorAmarillo = "#ffcd56";
+  let colorGrisCeleste = "#c9cbcf";
+  let colorCeleste = "#4bc0c0";
+  let tamagnoTitulo=40;
+  let tamagnoSubTitulo=30;
+  let tamagnoPais=19;
+  let tamagnoY=15;
+  let tamagnoToolTip=10;
+  let colorLineasHor="white";
+  let bgColor="white";
+  let colorFondo1="#fbfbfb";//251
+  let colorFondo2="#fafafa";//250
+  let colorFondo3="#f9f9f9";//249
+  let colorFondo4="#f8f8f8";//248
+  let colorFondo5="#f7f7f7";//247
+  let colorFondo6="#f6f6f6";//246
+  let colorFondo7="#f5f5f5";//245
+  let colorFondo8="#f4f4f4";//244
+  let colorFondo9="#f3f3f3";//243
+  
+  let colorGrisFondo = "#f0eded";
+  //let color=;
+  CanvasJS.addColorSet("Colors", [colorRojo, colorAmarillo, colorGrisCeleste, colorCeleste, "#90EE90"]);
   let chart = new CanvasJS.Chart("graficoDiv", 
   {
       height:800,
       exportEnabled: false,
       title: {
         text: `10 paises con más casos activos`,
-        //fontFamily:	“Calibri, Optima, Candara, Verdana, Geneva, sans-serif”
+        fontFamily: fuenteFamilia,
+        fontColor: colorFuente,
         horizontalAlign:'left',
-        fontColor: "blue",
-        fontSize: 50,
+        fontSize: tamagnoTitulo,
       },
       subtitles:[
         {
           text: "Estadísticas de Impacto Covid",
-          //fontFamily:	“Calibri, Optima, Candara, Verdana, Geneva, sans-serif”
-          fontColor: "blue",
-          fontSize: 30
+          fontFamily: fuenteFamilia,
+          fontColor: colorFuente,
+          fontSize: tamagnoSubTitulo
         }],
         axisY:{
+          labelFontFamily: fuenteFamilia,
+          labelFontColor: colorFuente,
+          labelFontSize: tamagnoY,
+
           valueFormatString: "#,###,,.##M",
           
-          interlacedColor: "#F8F1E4",
           tickLength: 10,
-          lineColor:	"grey",
+          gridColor:	colorLineasHor,
           lineThickness: 0.2,
           
           maximum: mayorCifra,
           scaleBreaks: {
-            spacing: 20, //5,10,20
-            color:"white",//“white”	“green”,”#23EA23″
-            lineColor:"gray",//“red”	“green”,”#23EA23″
+            spacing: 20, //
+            color:"white",//
+            lineColor:"gray",//
             lineThickness:2,//
-            type:"straight",//“straight”, “waved”, “zigzag”
+            type:"straight",//
             autoCalculate: true,
-            collapsibleThreshold: "60%",
+            collapsibleThreshold: "30%",
             maxNumberOfAutoBreaks: 3
           }
         },
       axisX:{
-          title: "Paises",
+          //title: "Paises",
+          labelFontFamily: fuenteFamilia,
+          labelFontColor: colorFuente,
+          labelFontSize: tamagnoPais,
           gridThickness: 0,
           tickLength: 10,
           stripLines:[
-            //desde el 2º al 10º pais
-            {startValue:0.5, endValue:1.5, color:"magenta"},
-            {startValue:1.5, endValue:2.5, color:"blue"},
-            {startValue:2.5, endValue:3.5, color:"black"},
-            {startValue:3.5, endValue:4.5, color:"red"},
-            {startValue:4.5, endValue:5.5, color:"magenta"},
-            {startValue:5.5, endValue:6.5, color:"blue"},
-            {startValue:6.5, endValue:7.5, color:"black"},
-            {startValue:7.5, endValue:8.5, color:"red"},
-            {startValue:8.5, endValue:9.5, color:"magenta"},
+            {startValue:0.5, endValue:1.5, color:colorFondo1},
+            {startValue:1.5, endValue:2.5, color:colorFondo2},
+            {startValue:2.5, endValue:3.5, color:colorFondo3},
+            {startValue:3.5, endValue:4.5, color:colorFondo4},
+            {startValue:4.5, endValue:5.5, color:colorFondo5},
+            {startValue:5.5, endValue:6.5, color:colorFondo6},
+            {startValue:6.5, endValue:7.5, color:colorFondo7},
+            {startValue:7.5, endValue:8.5, color:colorFondo8},
+            {startValue:8.5, endValue:9.5, color:colorFondo9},
             ]
          },
       
@@ -135,7 +164,7 @@ const chartColumn = (dataColumns) => {
       animationDuration: 2000,
       
       colorSet: "Colors",  //colores definidos al inicio de la funcion
-      backgroundColor: "#F5DEB3",
+      backgroundColor: bgColor,
       
       dataPointMaxWidth: 40,
       dataPointMinWidth: 5,
@@ -178,3 +207,4 @@ const chartPie = (dataModelCountry) => {
 
 chartColumn(datasForChart);
 chartPie(dataModelOrdenadaCortada[0]);
+export {chartColumn, chartPie}
