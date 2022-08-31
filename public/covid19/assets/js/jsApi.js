@@ -14,4 +14,3 @@ let infoData = (async() => {
 export default infoData;
 
       
- 
