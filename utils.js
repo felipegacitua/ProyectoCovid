@@ -4,7 +4,7 @@ const secretKey = "SECRET KEY"
 
 const validateToken = (req, res, next) => {
     try {
-        const authorization = req.header("Authorization")
+        const authorization = req.header("Authorization");
         if (!authorization) throw "Ningún token recibido"
         const [, token] = authorization.split("Bearer ")
         const tokenValido = jwt.verify(token || '', secretKey)
@@ -14,14 +14,19 @@ const validateToken = (req, res, next) => {
     }
 }
 
-const authorize = (req, res) => {
-    try {
-        const { email, password } = req.body
-        const userExists = users.some(u => u.email == email && u.password == password)
+const authorize = (req, res) => {  
+    try {     
+        const { email, password } = req.body; 
+        const userExists = users.some(u => u.email == email && u.password ==password)
+        console.log(userExists)
         if (userExists) {
             const token = jwt.sign({}, secretKey)
-            res.send(token)
-        } else throw "Usuario o contraseña incorrectos"
+            // Parseando token evitando error SyntaxError por no enviar un json valido
+            res.status(200).json({
+                token: token,
+                message:'Informacion privada'
+            }).end()
+        } else throw { message: "Usuario o contraseña incorrectos" }
     } catch (error) {
         res.status(500).send(error)
     }

@@ -7,6 +7,8 @@ fetch('http://localhost:3000/api/total')
 const dataUSA = (data) => {
   console.log("mostrando la data USA:", data[0]);
 };
+
+
 //en proceso JWT aun pero por buen camino 
 const PostData = async (email, password) => {
   try {
@@ -14,41 +16,79 @@ const PostData = async (email, password) => {
     console.log('PASSWORD', password)
     let payload = { email, password }
     const response = await fetch('http://localhost:3000/api/login',
-    {
-      method: "POST" ,
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(payload)
-      
-    });
-    console.log('TOKEN FRONT', responde.json())
+      {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+
+      });
+  //   console.log('TOKEN FRONT', responde.json())
     const token = await response.json()
     console.log('TOKEN FRONT', token)
-    if(token){
+    if (token) {
+      console.log("acceso exitoso")
       return token
-    }
+
+    }else(console.log("acceso denegado"))
 
 
-  }catch(error){
+  } catch (error) {
     console.log(error);
   }
-  
+
+
 };
+let email = '';
+let password = '';
 
-// const postData = async (email, password) => {
+document.getElementById('formulario').addEventListener("submit", (event)=>{
+  event.preventDefault();
+   email = document.getElementById('exampleInputEmail1').value;
+   password = document.getElementById('exampleInputPassword1').value;
+   PostData(email,password);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const getData = async (jwt) => {
 //   try {
-    
-//    const response = await fetch('http://localhost:3000/api/login', {
-//    method:'POST',
-//    body: JSON.stringify({email:email,password:password})
-//    })
-   
-//    const {token} = await response.json()
-   
-//    return token
-//   } catch (err) {
-//    console.error("error")
-//   }
-//   console.log({token})
-//   }
+//     console.log('Que retorna el token?', jwt)
+//     let { token } = jwt
+//     console.log('Que retorna el token 2', token)
+//     const response = await fetch(`http://localhost:3000/api/country/usa`,
+//       {
+//         method: 'GET',
+//         headers: {
+//           Authorization: `Bearer ${token}`
+//         }
+//       })
+//   }catch{error}
+  
 
+//  };
 
