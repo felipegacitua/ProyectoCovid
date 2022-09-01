@@ -119,18 +119,33 @@
 
  <!--  <seccion del modal > -->
 
-  <section id="modalDiv" class="container justify-content-center pt-5">
-    <!-- Large modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Modal Button</button>
-    <!--modal-->
-    <div style="height: 500px; width: 100%;" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div id="modalDetalle" class="modal-content">
-          <!--Inserta grafico desde js-->
+  <div id="modall">
+
+    <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          
+          
+          <!-- Modal body -->
+          <div id="modalDetalle" class="modal-body">
+            
+          </div>
+          
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+          
         </div>
       </div>
-    </div><!--Fin modal-->
-  </section>
+    </div>
+
+  </div>
+
+
+
 
   
   <!-- Tras haber leido el doc html -->

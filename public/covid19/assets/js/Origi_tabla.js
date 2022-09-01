@@ -8,6 +8,7 @@ import  infoData  from "./jsApi.js";
 // funcion que se exportara
 const datostabla = async () => {
   let arregloData = await infoData();
+  console.log('arregloData',arregloData)
   // sort y funcion para odernar alfabeticamente por paises
   let data =  arregloData.sort((a, b) => {
     if (a.country == b.country) {
@@ -28,21 +29,17 @@ const datostabla = async () => {
     <td>${data[i].active}</td>
     <td>${data[i].confirmed}</td>
     <td><!-- Button to Open the Modal -->
-    <button type="button" id="${i}"class="btn btn-primary botonn" data-toggle="modal" data-target="#myModal">
-      Abrir Estad&iacute;stica 
+    <button type="button" id="${i}" class="btn btn-primary botonn" data-toggle="modal" data-target="#myModal">
+      Open modal
     </button></td>
     </tr>`
   }
-
- //console.log('Cuerpo de la tabla', body)
- const impri= (e)=>{console.log("boton pulsado")
+  //console.log('Cuerpo de la tabla', body)
+  const impri= (e)=>{console.log("boton pulsado")
  let indexPieId= e.target.id;
 console.log("El id es: ",e.target.id);
 let paisInPie = data[indexPieId];
 console.log(paisInPie);
-
-
-
 
 const chartPie = (dataModelCountry) => {
 
@@ -76,10 +73,9 @@ const chartPie = (dataModelCountry) => {
 };
 
   chartPie(paisInPie);
-
-   }
- document.getElementById('cuerpoTabla').innerHTML = body;
+}
+document.getElementById('cuerpoTabla').innerHTML = body;
  document.querySelectorAll('.tablat .botonn').forEach((b)=>b.addEventListener('click',impri))
 }
-//expostando datos de la tabla.
- datostabla();
+ //expostando datos de la tabla.
+datostabla();
