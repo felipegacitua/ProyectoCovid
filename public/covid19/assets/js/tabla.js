@@ -1,25 +1,28 @@
 // para la table
 
 // importar datos para construir la tabla
-import { infoData } from "./jsApi.js";
+import  infoData  from "./jsApi.js";
+
+// console.log('infoData data', await infoData())
 
 // funcion que se exportara
-datostabla=(infoData)=>{
-
+const datostabla = async () => {
+  let arregloData = await infoData();
+  console.log('arregloData',arregloData)
   // sort y funcion para odernar alfabeticamente por paises
- let data = infoData.sort((a, b) => {
-  if (a.country == b.country) {
-    return 0;
-  }
-  if (a.country < b.country) {
-    return -1;
-  }
-  return 1;
-});
+  let data =  arregloData.sort((a, b) => {
+    if (a.country == b.country) {
+      return 0;
+    }
+    if (a.country < b.country) {
+      return -1;
+    }
+    return 1;
+  });
   //creando la tabla que ira cambiando los paises.
- let body = ""
- for (let i = 0; i < data.length; i++) {      
-    body+=`<tr>
+  let body = ""
+  for (let i = 0; i < data.length; i++) {
+    body += `<tr>
     <td>${data[i].country}</td>
     <td>${data[i].deaths}</td>
     <td>${data[i].recovered}</td>
@@ -30,8 +33,9 @@ datostabla=(infoData)=>{
       Open modal
     </button></td>
     </tr>`
- }
- document.getElementById('cuerpoTabla').innerHTML = body
- }
+  }
+  console.log('Cuerpo de la tabla', body)
+  document.getElementById('cuerpoTabla').innerHTML = body
+}
 //expostando datos de la tabla.
- export default infotabla;
+ datostabla();
