@@ -20,14 +20,14 @@ const PostData = async (email, password) => {
       body: JSON.stringify(payload)
       
     });
-    console.log('TOKEN FRONT', responde.json())
+    //   console.log('TOKEN FRONT', responde.json())
     const token = await response.json()
     console.log('TOKEN FRONT', token)
-    if(token){
+    if (token) {
+      console.log("acceso exitoso")
       return token
-    }
 
-
+    }else(console.log("acceso denegado"))
   }catch(error){
     console.log(error);
   }
