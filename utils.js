@@ -20,7 +20,11 @@ const authorize = (req, res) => {
         const userExists = users.some(u => u.email == email && u.password == password)
         if (userExists) {
             const token = jwt.sign({}, secretKey)
-            res.send(token)
+            res.status(200).json({
+                token: token,
+                message: 'Informacion privada'
+            }).end()
+
         } else throw "Usuario o contraseña incorrectos"
     } catch (error) {
         res.status(500).send(error)
